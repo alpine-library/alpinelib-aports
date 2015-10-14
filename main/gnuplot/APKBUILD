@@ -2,7 +2,7 @@
 # Maintainer:
 pkgname=gnuplot
 pkgver=4.4.4
-pkgrel=0
+pkgrel=1
 pkgdesc="utility for plotting graphs"
 url="http://www.gnuplot.info/"
 arch="all"
