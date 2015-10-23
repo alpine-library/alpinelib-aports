@@ -51,6 +51,7 @@ build() {
 		export REPODEST="$repodir"
 		cd "$aportsdir/$repo"/${i%/*} || return 1
 		if abuild -k -q up2date 2>/dev/null; then
+			echo "$repo/${i%/*} up2date"
 			continue
 		fi
 

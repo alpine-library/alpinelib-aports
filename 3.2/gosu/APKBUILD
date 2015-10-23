@@ -3,14 +3,14 @@
 pkgname=gosu
 pkgver=1.6
 pkgrel=0
-pkgdesc="This is a simple tool grown out of the simple fact that su and sudo have very strange and often annoying TTY and signal-forwarding behavior."
+pkgdesc="This is a simple tool who fix su and sudo annoying TTY and signal-forwarding behavior."
 url="https://github.com/tianon/gosu"
 arch="x86_64"
 license="GPL"
 makedepends="git go"
 options="!strip"
 install=""
-source="$pkgname-$pkgver.tar.gz::${url}/archive/v${pkgver}.tar.gz"
+source="$pkgname-$pkgver.tar.gz::${url}/archive/${pkgver}.tar.gz"
 
 _builddir="$srcdir/$pkgname-$pkgver"
 
@@ -30,12 +30,18 @@ build() {
 	export CGO_ENABLED=0
 	mkdir -p /go
 	cd "${GOSU_DIR}"
+	mkdir -p "${GOPATH}/src/github.com/tianon/"
 	ln -s "${GOSU_DIR}" "${GOPATH}/src/github.com/tianon/gosu"
+	go get ./...
 	go build -v -ldflags -d -o ${GOPATH}/bin/gosu
 }
 
 package() {
 	export DISTRIBUTION_DIR="${srcdir}/distribution-${pkgver}"
-	install -v -D -m755 "${GOPATH}/bin/gosu" "${pkgdir}/usr/bin/${pkgname}"
+	install -v -D -m755 "${GOPATH}/bin/gosu" "${pkgdir}/usr/local/bin/${pkgname}"
 	install -v -D -m644 ${_builddir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}
 }
+
+md5sums="b010164a193b5446a6b56529a2febb80  gosu-1.6.tar.gz"
+sha256sums="3056461cf61b3c0b40e9a7e220120afc11b2c79650e2bea5fe1423e0f861e3d2  gosu-1.6.tar.gz"
+sha512sums="8234974dbb7e18c701254aabf9db24e9f67f607e46bbd798915c9b5039ae3ffaa79b7b4749f2dc4f6124189bf579f6bff58d54447a217242e60d476962677147  gosu-1.6.tar.gz"

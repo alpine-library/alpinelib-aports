@@ -11,6 +11,7 @@ RUN curl -o /usr/local/bin/gosu -SL "https://github.com/tianon/gosu/releases/dow
 	&& chmod +x /usr/local/bin/gosu
 
 VOLUME /repo
+VOLUME /abuild
 WORKDIR /repo
 
 COPY docker-entrypoint.sh /entrypoint.sh
