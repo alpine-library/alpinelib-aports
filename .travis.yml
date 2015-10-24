@@ -7,9 +7,7 @@ services:
 
 before_install:
   - docker pull alpinelib/repobuilder:3.2
-  - docker pull alpinelib/repobuilder:edge
-  - docker run alpinelib/repobuilder:3.2 build 3.2
-  - docker run alpinelib/repobuilder:edge build edge
+  - docker run alpinelib/repobuilder:3.2 build main
 
 script:
     - docker ps -a
