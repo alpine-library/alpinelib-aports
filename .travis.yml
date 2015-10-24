@@ -5,10 +5,11 @@ sudo: required
 services:
   - docker
 
-before_script:
-    - chmod +x ./bashbrew/travis.sh
-    - chmod +x ./bashbrew/bashbrew.sh
-    - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+before_install:
+  - docker pull alpinelib/repobuilder:3.2
+  - docker pull alpinelib/repobuilder:edge
+  - docker run alpinelib/repobuilder:3.2 build 3.2
+  - docker run alpinelib/repobuilder:edge build edge
 
 script:
-    - ./bashbrew/travis.sh
+    - docker ps -a
