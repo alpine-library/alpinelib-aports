@@ -28,7 +28,7 @@ build() {
 	export GOSU_DIR="${_builddir}"
 	export GOPATH="/tmp/go"
 	export CGO_ENABLED=0
-	mkdir -p /go
+	mkdir -p ${GOPATH}
 	cd "${GOSU_DIR}"
 	mkdir -p "${GOPATH}/src/github.com/tianon/"
 	ln -s "${GOSU_DIR}" "${GOPATH}/src/github.com/tianon/gosu"
@@ -38,7 +38,7 @@ build() {
 
 package() {
 	export DISTRIBUTION_DIR="${srcdir}/distribution-${pkgver}"
-	install -v -D -m755 "${GOPATH}/bin/gosu" "${pkgdir}/usr/local/bin/${pkgname}"
+	install -v -D -m755 "${GOPATH}/bin/gosu" "${pkgdir}/us/bin/${pkgname}"
 	install -v -D -m644 ${_builddir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}
 }
 
