@@ -4,9 +4,9 @@ services:
 - docker
 before_install:
 - openssl aes-256-cbc -K $encrypted_cdd8fdcc4716_key -iv $encrypted_cdd8fdcc4716_iv
-  -in enc.key -out /alpine-library.github.io-5629488a.rsa -d
-- export SSHABUILDKEY=$(cat /alpine-library.github.io-5629488a.rsa)
-- rm -f /alpine-library.github.io-5629488a.rsa
+  -in enc.key -out alpine-library.github.io-5629488a.rsa -d
+- export SSHABUILDKEY=$(cat alpine-library.github.io-5629488a.rsa)
+- rm -f alpine-library.github.io-5629488a.rsa
 - docker pull alpinelib/repobuilder:3.2
 script:
 - if [[ $TRAVIS_PULL_REQUEST == 'false' ]]; then export DEPLOY=true; else export DEPLOY=false;fi
