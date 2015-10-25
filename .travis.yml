@@ -7,7 +7,7 @@ services:
 
 before_install:
   - docker pull alpinelib/repobuilder:3.2
-  - docker run alpinelib/repobuilder:3.2 build main
 
 script:
-    - docker ps -a
+  - if [[ $TRAVIS_PULL_REQUEST == 'false' ]]; then export DEPLOY=true; else export DEPLOY=false;fi
+  - docker run --rm -e ABUILD_SSHKEY="$SSHABUILDKEY" -e DEPLOY=$DEPLOY builder build main
