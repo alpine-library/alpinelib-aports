@@ -2,7 +2,7 @@
 # Author: Glider Labs <team@gliderlabs.com>
 
 pkgname="glibc"
-pkgver="2.21"
+pkgver="2.22"
 pkgrel="3"
 pkgdesc="GNU C Library compatibility layer"
 arch="x86_64"
@@ -39,5 +39,9 @@ bin() {
   cp -La "$srcdir"/ld.so.conf "$subpkgdir"/etc/
 }
 
-md5sums="cd2bef93120db7401bd7a4451e97dab4  glibc-2.21-2-x86_64.pkg.tar.xz
+md5sums="2f403116022721e2b61272e579b333b7  glibc-2.22-3-x86_64.pkg.tar.xz
 fda27293b95f89c7a61a0d379d1c3bde  ld.so.conf"
+sha256sums="a16e087a9ab7b71a68f07e027f2929b78e5c251a88a57a4bcd1948961cf7a86d  glibc-2.22-3-x86_64.pkg.tar.xz
+9326d6059d489c4b856b84948cf1a022872d9f580632d74833e9e21ec0d1eb9e  ld.so.conf"
+sha512sums="e9dfb568ce31b9a27d854f9733e46247925c0737d5d6176ff3afc6f55ad097f352aabb9171a2d008358fd8eb155803a59603558906cb598317156d7a77e35bf6  glibc-2.22-3-x86_64.pkg.tar.xz
+159d04bebfd4a6d26db8244e26a71c8e442e37adf8d341e27da871fde75420cc04df41c305ba3219b2e2adeee835056f6e19bfdf3081fd42d7cf07589eadecfc  ld.so.conf"
